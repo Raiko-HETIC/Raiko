@@ -1,23 +1,18 @@
-import React from 'react';
-import PropTypes from "prop-types";
+import React from "react"
+import PropTypes from "prop-types"
 
-import TextStyle from './Text.style';
+import TextStyle from "./Text.style"
 
-const Text = ({
-    className,
-    children,
-    color,
-    size,
-}) => {
+function Text({ className, children, color, size }) {
   return (
     <TextStyle
-        // Component
-        className={className}
-        // Style
-        $color={color}
-        $size={size}
+      // Component
+      className={className}
+      // Style
+      $color={color}
+      $size={size}
     >
-        {children}
+      {children}
     </TextStyle>
   )
 }
@@ -25,25 +20,15 @@ const Text = ({
 Text.propTypes = {
   children: PropTypes.string,
   className: PropTypes.string,
-  size: PropTypes.oneOf([
-    'small',
-    'medium',
-    'large',
-    'xlarge',
-  ]),
-  color: PropTypes.oneOf([
-    'cream',
-    'terra',
-    'primary',
-    'secondary'
-  ]),
+  size: PropTypes.oneOf(["small", "medium", "large", "xlarge"]),
+  color: PropTypes.oneOf(["cream", "terra", "primary", "secondary"]),
 }
 
-Text.defaultProps = {
+Text.defaultProps = {
   children: null,
   className: null,
-  size: 'medium',
-  color: 'primary',
+  size: "medium",
+  color: "primary",
 }
 
-export default Text;
+export default Text
