@@ -1,13 +1,13 @@
 import { Text, Card } from "components/atoms/grouping";
 import { Heading } from "components/atoms/text";
 import { ColorPickerWidget } from "components/organisms/widgets";
-// import { PageTemplate } from "components/templates";
+import { PageTemplate } from "components/templates";
 import React from "react";
 
 const HomePage = () => {
   return (
-    
-      <Card medium>
+    <PageTemplate>
+        <Card large>
         <Heading size="xlarge" color="primary">
           RAITŌ ライト
         </Heading>
@@ -23,6 +23,7 @@ const HomePage = () => {
         </Text>
         <ColorPickerWidget />
       </Card>
+    </PageTemplate>
   
   );
 };
