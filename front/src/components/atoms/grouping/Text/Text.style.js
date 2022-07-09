@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 const TextStyle = styled.p`
   color: ${({ theme, $color }) => theme.colors[$color]};
-  ${({ $size }) => {
+  ${({ $size, $textAlign }) => {
     let fontSize;
     switch ($size) {
       case "xsmall":
@@ -23,6 +23,7 @@ const TextStyle = styled.p`
     }
     return css`
       font-size: ${fontSize}px;
+      text-align: ${$textAlign};
     `;
   }}
 `;

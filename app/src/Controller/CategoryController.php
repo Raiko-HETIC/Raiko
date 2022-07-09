@@ -13,7 +13,7 @@ class CategoryController extends BaseController
 
     public function executeIndex()
     {
-        if ($this->HTTPRequest->getMethod() === 'GET')
+        if ($this->HTTPRequest->isMethodAllowed('GET') && $this->HTTPRequest->isUserAllowed())
         {
             $categoryModel = new CategoryModel(new PDOFactory());
             $category = $categoryModel->getAllCategory();

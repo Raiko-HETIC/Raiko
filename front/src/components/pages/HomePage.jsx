@@ -1,6 +1,7 @@
-import { Text } from "components/atoms/grouping";
-import Card from "components/atoms/grouping/Card/Card";
-import Heading from "components/atoms/text/Heading/Heading";
+import { Text, Card } from "components/atoms/grouping";
+import { Heading } from "components/atoms/text";
+import { ColorPickerWidget } from "components/organisms/widgets";
+// import { PageTemplate } from "components/templates";
 import React from "react";
 
 const HomePage = () => {
@@ -20,6 +21,7 @@ const HomePage = () => {
           journée que sont le réveil et l’endormissement, ainsi que dans les
           moments où vous souhaitez lâcher prise et vous détendre.
         </Text>
+        <ColorPickerWidget />
       </Card>
   
   );

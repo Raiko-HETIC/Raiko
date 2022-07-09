@@ -11,7 +11,7 @@ class ContentController extends BaseController
     // All Exercices & Ambiances
     public function executeExerciceList()
     {
-        if ($this->HTTPRequest->getMethod() === 'GET') 
+        if ($this->HTTPRequest->isMethodAllowed('GET') && (UserController::isTokenValid()))
         {
             $contentModel = new ContentModel(new PDOFactory());
             $exercices = $contentModel->getAllExercice();
@@ -21,7 +21,7 @@ class ContentController extends BaseController
 
     public function executeAmbianceList()
     {
-        if ($this->HTTPRequest->getMethod() === 'GET') 
+        if ($this->HTTPRequest->isMethodAllowed('GET'))
         {
             $contentModel = new ContentModel(new PDOFactory());
             $ambiance = $contentModel->getAllAmbiance();
@@ -31,7 +31,7 @@ class ContentController extends BaseController
 
     // Detailled view
     public function executeExerciceById (int $id = 1) {
-        if ($this->HTTPRequest->getMethod() === 'GET') 
+        if ($this->HTTPRequest->isMethodAllowed('GET'))
         {
             $contentModel = new ContentModel(new PDOFactory());
             $exercice = $contentModel->getExerciceById($id);

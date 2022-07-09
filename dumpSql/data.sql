@@ -32,37 +32,61 @@ INSERT INTO `category` (`id`, `name`) VALUES
 (4, 'Feu'),
 (5, 'Ambiance');
 
--- --------------------------------------------------------
-
 --
--- Structure de la table `content`
+-- Table structure for table `ambiance`
 --
 
-CREATE TABLE `content` (
-  `id` int(11) NOT NULL,
-  `title` varchar(30) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `id_user_role` int (5) NOT NULL,
-  `id_category` int(11) NOT NULL,
-  `id_type` int(11) NOT NULL,
+CREATE TABLE `ambiance` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) NOT NULL,
+  `id_category` int(3) NOT NULL,
   `status` tinyint(1) NOT NULL,
-  `duration_creation` smallint(6) NOT NULL,
-  `voice_creation` varchar(40) DEFAULT NULL,
-  `rise_duration` tinyint(4) DEFAULT NULL,
-  `fall_duration` tinyint(4) DEFAULT NULL,
-  `hight_intensity` tinyint(4) DEFAULT NULL,
-  `low_intensity` tinyint(4) DEFAULT NULL,
-  `color` varchar(6) DEFAULT NULL,
-  `music` varchar(40) DEFAULT NULL,
-  `picture` varchar(40) DEFAULT NULL,
-  `description` varchar(1000) DEFAULT NULL,
+  `duration` decimal(2,1) NOT NULL,
+  `music_url` varchar(200) NOT NULL,
+  `image_url` varchar(200) NOT NULL,
+  `description` text NOT NULL,
+  `author` int(4) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `ambiance`
+--
+SET NAMES utf8;
+INSERT INTO `ambiance` VALUES
+(1,'Oiseau',2,1,6.4,'https://raitohetic.s3.eu-west-3.amazonaws.com/Birds.wav','https://raitohetic.s3.eu-west-3.amazonaws.com/Component_10.svg',"Détendez-vous au doux son des oiseaux de cette forêt verdoyante. Relaxant et rafraichissant, laissez-vous porter... ",1),
+(2,'Feu',4,1,0.4,'https://raitohetic.s3.eu-west-3.amazonaws.com/FIREBurn.wav','https://raitohetic.s3.eu-west-3.amazonaws.com/Component_1.svg',"Crépitez au son de la flamme. Apaisez vous avec ce doux son rappelant le chocolat chaud et l'hiver ...",1),
+(3,'Eau',1,1,2.2,'https://raitohetic.s3.eu-west-3.amazonaws.com/WATERWave.wav','https://raitohetic.s3.eu-west-3.amazonaws.com/Component_3.svg',"Besoin de vous reconnecter à la nature ? Plongez-vous dans une ambiance de calme et de sérénité ...",1),
+(4,'Foret',3,1,1.1,'https://raitohetic.s3.eu-west-3.amazonaws.com/Forest.wav','https://raitohetic.s3.eu-west-3.amazonaws.com/Component_2.svg',"Que diriez vous d'une balade en forêt? Laissez vous emporter par le son des feuilles qui craquellent ...",1);
+
+
+--
+-- Table structure for table `exercice`
+--
+
+DROP TABLE IF EXISTS `exercice`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+
+CREATE TABLE `exercice` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `title` varchar(200) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `duration` decimal(2,1) NOT NULL,
+  `voice_duration` decimal(2,1) NOT NULL,
+  `rise_duration` decimal(2,1) DEFAULT NULL,
+  `fall_duration` decimal(2,1) DEFAULT NULL,
+  `high_intensity` decimal(2,1) DEFAULT NULL,
+  `low_intencity` decimal(2,1) DEFAULT NULL,
+  `color` varchar(10) NOT NULL,
+  `url_music` varchar(200) NOT NULL,
+  `url_image` varchar(200) NOT NULL,
   `note` decimal(3,1) DEFAULT NULL,
-  `nb_note` int(11) DEFAULT NULL
+  `nb_note` int(5) DEFAULT NULL,
+  `id_user` int(5) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
 
---
 -- Structure de la table `content_type`
 --
 
@@ -128,10 +152,7 @@ ALTER TABLE `category`
 --
 -- Index pour la table `content`
 --
-ALTER TABLE `content`
-  ADD PRIMARY KEY (`id`);
 
---
 -- Index pour la table `content_type`
 --
 ALTER TABLE `content_type`
@@ -162,10 +183,7 @@ ALTER TABLE `category`
 --
 -- AUTO_INCREMENT pour la table `content`
 --
-ALTER TABLE `content`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
---
 -- AUTO_INCREMENT pour la table `content_type`
 --
 ALTER TABLE `content_type`
