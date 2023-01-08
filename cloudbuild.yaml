@@ -1,0 +1,5 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'europe-west1-docker.pkg.dev/raito-369114/raito-docker-repo/backend-image:tag2', '.' ]
+images:
+- 'europe-west1-docker.pkg.dev/raito-369114/raito-docker-repo/backend-image:tag2'

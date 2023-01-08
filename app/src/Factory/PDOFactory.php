@@ -12,34 +12,17 @@ class PDOFactory implements ConnectionInterface
     private static string $dsn = 'mysql:host=db';
     private static string $username = 'root';
     private static string $password = 'password';
+    private static int $connect_timeout_in_seconds = 5;
     const DATABASE = 'Raito';
 
     public static function getMysqlConnection(): PDO
     {
-        try {
-            $db = new PDO(self::$dsn, self::$username, self::$password);
-            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        }
-        catch (Exception $e){
-            echo 'Erreur : ' . $e->getMessage();
-        }
+        $db = new PDO(self::$dsn, self::$username, self::$password, array(PDO::ATTR_TIMEOUT => self::$connect_timeout_in_seconds));
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $db;
     }
 
     public function getConnection(): PDO {
         return self::getMysqlConnection();
     }
-
-    /*    public function __construct()
-    {
-        $this->pdo = new PDO('mysql:host=db;dbname=Raito', 'root', 'password');
-    }
-
-    /**
-     * @return PDO
-     */
-//    public function getPdo(): PDO
-//    {
-//        return $this->pdo;
-//    }
 }

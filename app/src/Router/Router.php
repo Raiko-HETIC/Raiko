@@ -27,10 +27,7 @@ class Router
                 }
                 return new $controllerClass($action, $params);
             }
-
         }
-
         return new ErrorController('error404');
-
     }
 }

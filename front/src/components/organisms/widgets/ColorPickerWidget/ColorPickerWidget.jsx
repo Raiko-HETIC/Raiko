@@ -21,7 +21,7 @@ const ColorPickerWidget = () => {
       const data = {
         colorHexadecimal: color,
       };
-      const response = await fetch("http://localhost:2345/color", {
+      const response = await fetch(":2345/color", {
         method: "POST",
         body: JSON.stringify(data),
         mode: "cors",

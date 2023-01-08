@@ -34,7 +34,7 @@ const LoginForm = () => {
     });
     console.log(headers);
     try {
-      const response = await fetch("http://localhost:2345/login", {
+      const response = await fetch(":2345/login", {
         method: "POST",
         mode: "cors",
         credentials: "include",

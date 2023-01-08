@@ -13,7 +13,7 @@ const Profil = () => {
   const getUser = async () => {
     setUserDataIsLoading(true);
     try {
-      const response = await fetch("http://localhost:2345/user", {
+      const response = await fetch(":2345/user", {
         method: "GET",
         mode: "cors",
         credentials: "include",
